@@ -15,15 +15,23 @@ export const Title = styled.h1`
 
 export const Game = styled.div`
   display: grid;
-  grid-template-columns: repeat(8, 1fr);
-  width: 100%;
+
   place-items: center;
   grid-gap: 10px;
   margin: auto;
   margin-bottom: 20px;
-  @media (min-width: 1000px) {
-    width: 45%;
-  }
+  //Easy
+  width: ${(props) => (props.dificulty === 8 ? "25%" : "")};
+  grid-template-columns: ${(props) =>
+    `repeat(${props.dificulty === 8 ? "4, 1fr" : ""})`};
+  //Medium
+  width: ${(props) => (props.dificulty === 18 ? "35%" : "")};
+  grid-template-columns: ${(props) =>
+    `repeat(${props.dificulty === 18 ? "6, 1fr" : ""})`};
+  //Hard
+  width: ${(props) => (props.dificulty === 32 ? "45%" : "")};
+  grid-template-columns: ${(props) =>
+    `repeat(${props.dificulty === 32 ? "8, 1fr" : ""})`};
 `;
 
 export const Stats = styled.div`

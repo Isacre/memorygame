@@ -29,7 +29,12 @@ export const Front = styled.div`
   height: 100%;
   width: 100%;
   border-radius: 10px;
-  box-shadow: 0px 0px 10px black;
+  box-shadow: ${(props) =>
+    props.className === "found"
+      ? "0px 0px 10px #43FFFF"
+      : "0px 0px 10px black"};
+  transition: 1s;
+
   backface-visibility: hidden;
   transform: rotateY(180deg);
 `;

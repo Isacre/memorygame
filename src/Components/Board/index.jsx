@@ -4,23 +4,24 @@ import { Potato as Images } from "../Images";
 import Card from "../Card";
 import { shuffle } from "lodash";
 
-function Board() {
+function Board(props) {
+  const dificulty = props.dificulty;
   const [ImagesData, setImagesData] = useState(shuffle([...Images, ...Images]));
+  const Filtereddata = Images.splice(0, 32 - dificulty);
   const [clicks, setClicks] = useState(0);
   const [activeCardsvalue, setactiveCards] = useState([]);
   const [FoundPairs, setFoundPairs] = useState([]);
   const activeCards = [...new Set(activeCardsvalue)];
-  console.log(activeCards, FoundPairs);
 
   return (
     <BoardContainer>
-      {FoundPairs.length === 64 ? (
+      {FoundPairs.length === ImagesData.length ? (
         <Title>VOCÊ VENCEU, PARABENS</Title>
       ) : (
         <Title>JOGO DA MEMORIA</Title>
       )}
 
-      <Game>
+      <Game dificulty={dificulty}>
         {ImagesData.map((card, index) => {
           return (
             <Card
@@ -35,6 +36,7 @@ function Board() {
               activeCards={activeCards}
               ImagesData={ImagesData}
               Pairs={FoundPairs}
+              Filtereddata={Filtereddata}
             />
           );
         })}

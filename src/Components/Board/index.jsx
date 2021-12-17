@@ -6,9 +6,9 @@ import { shuffle } from "lodash";
 
 const BoardContainer = styled.div`
   height: 95vh;
-  width: 95%;
+  width: 95vw;
   margin: auto;
-  margin-top: 20px;
+  margin-top: 2vh;
 `;
 const Title = styled.h1`
   color: #fff;
@@ -19,14 +19,18 @@ const Title = styled.h1`
 const Game = styled.div`
   display: grid;
   grid-template-columns: repeat(8, 1fr);
-  width: 50%;
+  width: 100%;
   place-items: center;
   grid-gap: 10px;
   margin: auto;
+
+  @media (min-width: 1000px) {
+    width: 50%;
+  }
 `;
 
 function Board() {
-  const [ImagesData, setImagesData] = useState([...Images, ...Images]);
+  const [ImagesData, setImagesData] = useState(shuffle([...Images, ...Images]));
   const [clicks, setClicks] = useState(0);
   const [activeCardsvalue, setactiveCards] = useState([]);
   const [FoundPairs, setFoundPairs] = useState([]);
@@ -44,16 +48,17 @@ function Board() {
         {ImagesData.map((card, index) => {
           return (
             <Card
-              card={card}
               setClicks={setClicks}
+              setactiveCards={setactiveCards}
+              setFoundPairs={setFoundPairs}
+              setImagesData={setImagesData}
+              card={card}
               clicks={clicks}
               index={index}
               key={index}
               activeCards={activeCards}
-              setactiveCards={setactiveCards}
               ImagesData={ImagesData}
               Pairs={FoundPairs}
-              setFoundPairs={setFoundPairs}
             />
           );
         })}

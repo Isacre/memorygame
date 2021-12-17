@@ -3,10 +3,13 @@ import styled from "styled-components";
 import reacticon from "../../assets/reacticon.svg";
 
 const MainContainer = styled.div`
+  cursor: pointer;
   position: relative;
-  width: 115px;
-  height: 115px;
+  width: 100px;
+  height: 100px;
   perspective: 1000px;
+
+  }
 `;
 const CardContainer = styled.div`
   position: absolute;
@@ -44,6 +47,13 @@ const Back = styled.div`
   border-radius: 10px;
   box-shadow: 0px 0px 10px black;
   backface-visibility: hidden;
+
+  img {
+    :hover {
+      filter: contrast(200%);
+      transition: 0.5s;
+    }
+  }
 `;
 
 export default function Card(props) {

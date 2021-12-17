@@ -27,13 +27,11 @@ export default function Card(props) {
       setFoundPairs([...Pairs, ...activeCards, index]);
       setactiveCards([]);
     }
-
     if (activeCards.length === 1) {
       setactiveCards([...activeCards, index]);
-    }
-
-    if (activeCards.length === 2) {
-      setactiveCards([index]);
+      setTimeout(function () {
+        setactiveCards([]);
+      }, 800);
     }
   }
 

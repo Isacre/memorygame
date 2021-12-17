@@ -7,13 +7,11 @@ import { shuffle } from "lodash";
 function Board(props) {
   const dificulty = props.dificulty;
   const [ImagesData, setImagesData] = useState(shuffle([...Images, ...Images]));
-  const Filtereddata = Images.splice(0, 32 - dificulty);
+  Images.splice(0, 8);
   const [clicks, setClicks] = useState(0);
   const [activeCardsvalue, setactiveCards] = useState([]);
   const [FoundPairs, setFoundPairs] = useState([]);
   const activeCards = [...new Set(activeCardsvalue)];
-  console.log(activeCards);
-  console.log(FoundPairs);
 
   return (
     <BoardContainer>
@@ -38,7 +36,6 @@ function Board(props) {
               activeCards={activeCards}
               ImagesData={ImagesData}
               Pairs={FoundPairs}
-              Filtereddata={Filtereddata}
               dificulty={dificulty}
             />
           );

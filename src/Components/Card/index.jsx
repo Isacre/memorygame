@@ -47,10 +47,10 @@ export default function Card(props) {
         }
       >
         <Back>
-          <img src={reacticon} alt="backicon" />
+          <img src={reacticon} alt="backicon" draggable="false" />
         </Back>
         <Front className={Pairs.indexOf(index) !== -1 ? "found" : ""}>
-          <img src={card} alt="frontimg" />
+          <img src={card} alt="frontimg" draggable="false" />
         </Front>
       </CardContainer>
     </MainContainer>

@@ -1,4 +1,3 @@
-import { transform } from "lodash";
 import React, { useState } from "react";
 import styled from "styled-components";
 import reacticon from "../../assets/reacticon.svg";
@@ -50,7 +49,6 @@ export default function Card(props) {
   const card = props.card;
   const clicks = props.clicks;
   const { setClicks } = props;
-  const activeCards = props.activeCards;
 
   return (
     <MainContainer>

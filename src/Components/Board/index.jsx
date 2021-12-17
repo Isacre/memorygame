@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import styled from "styled-components";
-import Images from "../Images";
+import { Potato as Images } from "../Images";
 import Card from "../Card";
 import { shuffle } from "lodash";
 
@@ -28,7 +28,6 @@ const Game = styled.div`
 function Board() {
   const [ImagesData, setImagesData] = useState(shuffle([...Images, ...Images]));
   const [clicks, setClicks] = useState(0);
-  const activeCards = [{}];
 
   return (
     <BoardContainer>
@@ -40,8 +39,9 @@ function Board() {
               card={card}
               setClicks={setClicks}
               clicks={clicks}
+              index={index}
               key={index}
-              activeCards={activeCards}
+              setImagesData={setImagesData}
             />
           );
         })}

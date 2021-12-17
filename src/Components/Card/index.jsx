@@ -14,20 +14,27 @@ export default function Card(props) {
 
   function handleCardClick() {
     setClicks(clicks + 1);
+
     if (activeCards.length === 0) {
       setactiveCards([index]);
     }
+
     if (
       activeCards.length === 1 &&
+      activeCards[0] !== index &&
       ImagesData[activeCards[0]] === ImagesData[index]
     ) {
       setFoundPairs([...Pairs, ...activeCards, index]);
-      setactiveCards([...activeCards, index]);
+      setactiveCards([]);
     }
+
     if (activeCards.length === 1) {
       setactiveCards([...activeCards, index]);
     }
-    if (activeCards.length === 2) setactiveCards([index]);
+
+    if (activeCards.length === 2) {
+      setactiveCards([index]);
+    }
   }
 
   return (

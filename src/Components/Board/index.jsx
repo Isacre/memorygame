@@ -12,6 +12,8 @@ function Board(props) {
   const [activeCardsvalue, setactiveCards] = useState([]);
   const [FoundPairs, setFoundPairs] = useState([]);
   const activeCards = [...new Set(activeCardsvalue)];
+  console.log(activeCards);
+  console.log(FoundPairs);
 
   return (
     <BoardContainer>

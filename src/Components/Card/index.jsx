@@ -10,6 +10,7 @@ export default function Card(props) {
   const clicks = props.clicks;
   const ImagesData = props.ImagesData;
   const Pairs = props.Pairs;
+  const dificulty = props.dificulty;
 
   function handleCardClick() {
     setClicks(clicks + 1);
@@ -30,7 +31,7 @@ export default function Card(props) {
   }
 
   return (
-    <MainContainer>
+    <MainContainer dificulty={dificulty}>
       <CardContainer
         onClick={handleCardClick}
         activeCards={activeCards}

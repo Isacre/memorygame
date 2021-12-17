@@ -37,11 +37,12 @@ function Board(props) {
               ImagesData={ImagesData}
               Pairs={FoundPairs}
               Filtereddata={Filtereddata}
+              dificulty={dificulty}
             />
           );
         })}
       </Game>
-      <Stats>
+      <Stats dificulty={dificulty}>
         <p>Clicks: {clicks}</p>
         <p>Pares encontrados: {FoundPairs.length / 2}</p>
       </Stats>

@@ -14,7 +14,6 @@ export const CardContainer = styled.div`
   transform-style: preserve-3d;
   transition: all 0.5s ease;
   border-radius: 10px;
-  transform: ${(props) => `rotateY(${props.flipped ? "180deg" : "0deg"})`};
   transform: ${(props) =>
     `rotateY(${props.className === "flipped" ? "180deg" : "0deg"})`};
 

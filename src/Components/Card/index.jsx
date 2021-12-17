@@ -1,9 +1,8 @@
 import { MainContainer, CardContainer, Front, Back } from "./styles";
-import React, { useState } from "react";
+import React from "react";
 import reacticon from "../../assets/reacticon.svg";
 
 export default function Card(props) {
-  const [Flipped, setFlipped] = useState(false);
   const { setClicks, setactiveCards, setFoundPairs } = props;
   const index = props.index;
   const activeCards = props.activeCards;
@@ -13,7 +12,6 @@ export default function Card(props) {
   const Pairs = props.Pairs;
 
   function handleCardClick() {
-    setFlipped(true);
     setClicks(clicks + 1);
     if (activeCards.length === 0) {
       setactiveCards([index]);
@@ -34,7 +32,6 @@ export default function Card(props) {
   return (
     <MainContainer>
       <CardContainer
-        flipped={Flipped}
         onClick={handleCardClick}
         activeCards={activeCards}
         className={

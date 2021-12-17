@@ -26,12 +26,20 @@ const Game = styled.div`
 `;
 
 function Board() {
-  const [ImagesData, setImagesData] = useState(shuffle([...Images, ...Images]));
+  const [ImagesData, setImagesData] = useState([...Images, ...Images]);
   const [clicks, setClicks] = useState(0);
+  const [activeCardsvalue, setactiveCards] = useState([]);
+  const [FoundPairs, setFoundPairs] = useState([]);
+  const activeCards = [...new Set(activeCardsvalue)];
+  console.log(FoundPairs.length);
 
   return (
     <BoardContainer>
-      <Title>JOGO DA MEMORIA</Title>
+      {FoundPairs.length === 94 ? (
+        <Title>VOCÊ VENCEU, PARABENS</Title>
+      ) : (
+        <Title>JOGO DA MEMORIA</Title>
+      )}
       <Game>
         {ImagesData.map((card, index) => {
           return (
@@ -41,7 +49,11 @@ function Board() {
               clicks={clicks}
               index={index}
               key={index}
-              setImagesData={setImagesData}
+              activeCards={activeCards}
+              setactiveCards={setactiveCards}
+              ImagesData={ImagesData}
+              Pairs={FoundPairs}
+              setFoundPairs={setFoundPairs}
             />
           );
         })}

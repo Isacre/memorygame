@@ -16,6 +16,8 @@ const CardContainer = styled.div`
   transition: all 0.5s ease;
   border-radius: 10px;
   transform: ${(props) => `rotateY(${props.flipped ? "180deg" : "0deg"})`};
+  transform: ${(props) =>
+    `rotateY(${props.className === "flipped" ? "180deg" : "0deg"})`};
 
   img {
     height: 100%;
@@ -46,18 +48,52 @@ const Back = styled.div`
 
 export default function Card(props) {
   const [Flipped, setFlipped] = useState(false);
+  const { setClicks, setactiveCards, setFoundPairs } = props;
+  const index = props.index;
+  const activeCards = props.activeCards;
   const card = props.card;
   const clicks = props.clicks;
-  const { setClicks } = props;
+  const ImagesData = props.ImagesData;
+  const Pairs = props.Pairs;
+
+  function handleCardClick() {
+    setFlipped(true);
+
+    setClicks(clicks + 1);
+    if (activeCards.length === 0) {
+      setactiveCards([index]);
+    }
+    if (
+      activeCards.length === 1 &&
+      ImagesData[activeCards[0]] === ImagesData[index]
+    ) {
+      setFoundPairs([...Pairs, ...activeCards]);
+      setactiveCards([]);
+    }
+    if (activeCards.length === 1) {
+      setactiveCards([...activeCards, index]);
+    }
+    if (
+      activeCards.length === 2 &&
+      ImagesData[activeCards[0]] === ImagesData[activeCards[1]]
+    ) {
+      setFoundPairs([...Pairs, ...activeCards]);
+      setactiveCards([index]);
+    }
+    if (activeCards.length === 2) setactiveCards([index]);
+  }
 
   return (
     <MainContainer>
       <CardContainer
         flipped={Flipped}
-        onClick={() => {
-          setFlipped(true);
-          setClicks(clicks + 1);
-        }}
+        onClick={handleCardClick}
+        activeCards={activeCards}
+        className={
+          activeCards.indexOf(index) !== -1 || Pairs.indexOf(index) !== -1
+            ? "flipped"
+            : ""
+        }
       >
         <Back>
           <img src={reacticon} alt="backicon" />

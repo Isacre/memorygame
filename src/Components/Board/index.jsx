@@ -1,10 +1,13 @@
-import { BoardContainer, Title, Game, Stats } from "./styles";
+import { BoardContainer, Title, Game, Stats, PlayAgainButton } from "./styles";
 import React, { useState } from "react";
 import { Images as Imagens } from "../Images";
 import Card from "../Card";
 import { shuffle } from "lodash";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 function Board(props) {
+  const { setDificulty } = props;
   const dificulty = props.dificulty;
   const slicedimages = Imagens.slice(0, dificulty);
   const [ImagesData, setImagesData] = useState(
@@ -15,8 +18,20 @@ function Board(props) {
   const [FoundPairs, setFoundPairs] = useState([]);
   const activeCards = [...new Set(activeCardsvalue)];
 
+  function ResetGame() {
+    setFoundPairs([]);
+    setClicks(0);
+    setactiveCards([]);
+    setTimeout(function () {
+      setImagesData(shuffle([...slicedimages, ...slicedimages]));
+    }, 300);
+
+    toast.success("Cartas embaralhadas", { theme: "dark" });
+  }
+
   return (
     <BoardContainer>
+      <ToastContainer />
       {FoundPairs.length === ImagesData.length ? (
         <Title>VOCÊ VENCEU, PARABENS</Title>
       ) : (
@@ -44,8 +59,16 @@ function Board(props) {
         })}
       </Game>
       <Stats dificulty={dificulty}>
-        <p>Clicks: {clicks}</p>
-        <p>Pares encontrados: {FoundPairs.length / 2}</p>
+        <p>Erros: {clicks}</p>
+        <PlayAgainButton onClick={ResetGame}>Reiniciar</PlayAgainButton>
+        <PlayAgainButton
+          onClick={() => {
+            setDificulty(0);
+          }}
+        >
+          Trocar dificuldade
+        </PlayAgainButton>
+        <p>Acertos: {FoundPairs.length / 2}</p>
       </Stats>
     </BoardContainer>
   );

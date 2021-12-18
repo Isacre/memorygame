@@ -13,12 +13,9 @@ export default function Card(props) {
   const dificulty = props.dificulty;
 
   function handleCardClick() {
-    setClicks(clicks + 1);
-
     if (activeCards.length === 0) {
       setactiveCards([index]);
     }
-
     if (
       activeCards.length === 1 &&
       activeCards[0] !== index &&
@@ -27,11 +24,15 @@ export default function Card(props) {
       setFoundPairs([...Pairs, ...activeCards, index]);
       setactiveCards([]);
     }
-    if (activeCards.length === 1) {
+    if (
+      activeCards.length === 1 &&
+      ImagesData[activeCards[0]] !== ImagesData[index]
+    ) {
       setactiveCards([...activeCards, index]);
       setTimeout(function () {
         setactiveCards([]);
       }, 800);
+      setClicks(clicks + 1);
     }
   }
 

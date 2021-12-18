@@ -58,3 +58,15 @@ export const Stats = styled.div`
     font-weight: 700;
   }
 `;
+
+export const PlayAgainButton = styled.button`
+  height: 60%;
+  width: 30%;
+  margin-left: 5%;
+  background-color: rgb(91, 155, 251);
+  border: none;
+  color: #fff;
+  border-radius: 5px;
+  border: 1px solid #fff;
+  cursor: pointer;
+`;

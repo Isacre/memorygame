@@ -9,6 +9,7 @@ export const Component = styled.div`
 
   @media (max-width: 1000px) {
     grid-template-columns: repeat(1, 1fr);
+    height: fit-content;
   }
 `;
 export const DificultyLevel = styled.div`
@@ -24,23 +25,26 @@ export const DificultyLevel = styled.div`
   cursor: pointer;
   @media (max-width: 1000px) {
     height: 90%;
-    margin-bottom: 10px;
+    margin-bottom: 20px;
   }
 
   @media (min-width: 1400px) {
-    height: 65%;
+    height: 50%;
+    width: 70%;
   }
   :hover {
     filter: brightness(110%);
   }
   h1 {
     color: #fff;
+    margin-bottom: 15px;
   }
 
   img {
     width: 70%;
     height: 70%;
     border-radius: 10px;
+    margin-bottom: 15px;
   }
 `;
 

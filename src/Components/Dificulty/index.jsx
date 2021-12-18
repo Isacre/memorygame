@@ -15,12 +15,12 @@ export default function Dificulty() {
           <H1>ESCOLHA A DIFICULDADE</H1>
           <Component>
             <DificultyLevel onClick={() => setDificulty(8)}>
-              <h1>Facil</h1>
+              <h1>Fácil</h1>
               <img src={easy} alt="easy" />
               <h1>4X4</h1>
             </DificultyLevel>
             <DificultyLevel onClick={() => setDificulty(18)}>
-              <h1>Medio</h1>
+              <h1>Médio</h1>
               <img src={medium} alt="medium" />
               <h1>6X6</h1>
             </DificultyLevel>
@@ -32,7 +32,7 @@ export default function Dificulty() {
           </Component>
         </>
       ) : (
-        <Board dificulty={dificulty} />
+        <Board dificulty={dificulty} setDificulty={setDificulty} />
       )}
     </>
   );

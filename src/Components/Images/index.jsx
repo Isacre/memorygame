@@ -31,7 +31,7 @@ import Image30 from "../../assets/30.jpg";
 import Image31 from "../../assets/31.jpg";
 import Image32 from "../../assets/32.jpg";
 
-export const Potato = [
+export const Images = [
   Image01,
   Image02,
   Image03,

@@ -1,13 +1,15 @@
 import { BoardContainer, Title, Game, Stats } from "./styles";
 import React, { useState } from "react";
-import { Potato as Images } from "../Images";
+import { Images as Imagens } from "../Images";
 import Card from "../Card";
 import { shuffle } from "lodash";
 
 function Board(props) {
   const dificulty = props.dificulty;
-  const [ImagesData, setImagesData] = useState(shuffle([...Images, ...Images]));
-  Images.splice(0, 8);
+  const slicedimages = Imagens.slice(0, dificulty);
+  const [ImagesData, setImagesData] = useState(
+    shuffle([...slicedimages, ...slicedimages])
+  );
   const [clicks, setClicks] = useState(0);
   const [activeCardsvalue, setactiveCards] = useState([]);
   const [FoundPairs, setFoundPairs] = useState([]);
